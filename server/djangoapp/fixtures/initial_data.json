@@ -1,0 +1,382 @@
+[
+  {
+    "model": "djangoapp.carmake",
+    "pk": 1,
+    "fields": {
+      "name": "Toyota",
+      "description": "Japanese multinational automotive manufacturer known for reliability and fuel efficiency."
+    }
+  },
+  {
+    "model": "djangoapp.carmake",
+    "pk": 2,
+    "fields": {
+      "name": "Honda",
+      "description": "Japanese manufacturer famous for quality engineering and long-lasting vehicles."
+    }
+  },
+  {
+    "model": "djangoapp.carmake",
+    "pk": 3,
+    "fields": {
+      "name": "Ford",
+      "description": "American automaker known for trucks, SUVs, and muscle cars."
+    }
+  },
+  {
+    "model": "djangoapp.carmake",
+    "pk": 4,
+    "fields": {
+      "name": "Chevrolet",
+      "description": "American brand offering a wide range of vehicles from economy cars to trucks."
+    }
+  },
+  {
+    "model": "djangoapp.carmake",
+    "pk": 5,
+    "fields": {
+      "name": "BMW",
+      "description": "German luxury vehicle manufacturer known for performance and precision engineering."
+    }
+  },
+  {
+    "model": "djangoapp.carmake",
+    "pk": 6,
+    "fields": {
+      "name": "Tesla",
+      "description": "American electric vehicle manufacturer leading innovation in EV technology."
+    }
+  },
+  {
+    "model": "djangoapp.carmake",
+    "pk": 7,
+    "fields": {
+      "name": "Jeep",
+      "description": "American brand specializing in off-road and sport utility vehicles."
+    }
+  },
+  {
+    "model": "djangoapp.carmake",
+    "pk": 8,
+    "fields": {
+      "name": "Ram",
+      "description": "American truck brand known for powerful pickup trucks."
+    }
+  },
+  {
+    "model": "djangoapp.carmake",
+    "pk": 9,
+    "fields": {
+      "name": "Subaru",
+      "description": "Japanese automaker known for all-wheel drive vehicles and boxer engines."
+    }
+  },
+  {
+    "model": "djangoapp.carmake",
+    "pk": 10,
+    "fields": {
+      "name": "Mercedes-Benz",
+      "description": "German luxury automaker known for innovation, comfort, and prestige."
+    }
+  },
+  {
+    "model": "djangoapp.carmodel",
+    "pk": 1,
+    "fields": {
+      "car_make": 1,
+      "name": "Camry",
+      "type": "SEDAN",
+      "year": 2024
+    }
+  },
+  {
+    "model": "djangoapp.carmodel",
+    "pk": 2,
+    "fields": {
+      "car_make": 1,
+      "name": "Corolla",
+      "type": "SEDAN",
+      "year": 2024
+    }
+  },
+  {
+    "model": "djangoapp.carmodel",
+    "pk": 3,
+    "fields": {
+      "car_make": 1,
+      "name": "RAV4",
+      "type": "SUV",
+      "year": 2024
+    }
+  },
+  {
+    "model": "djangoapp.carmodel",
+    "pk": 4,
+    "fields": {
+      "car_make": 1,
+      "name": "Tacoma",
+      "type": "PICKUP",
+      "year": 2024
+    }
+  },
+  {
+    "model": "djangoapp.carmodel",
+    "pk": 5,
+    "fields": {
+      "car_make": 1,
+      "name": "Prius",
+      "type": "SEDAN",
+      "year": 2024
+    }
+  },
+  {
+    "model": "djangoapp.carmodel",
+    "pk": 6,
+    "fields": {
+      "car_make": 2,
+      "name": "Civic",
+      "type": "SEDAN",
+      "year": 2024
+    }
+  },
+  {
+    "model": "djangoapp.carmodel",
+    "pk": 7,
+    "fields": {
+      "car_make": 2,
+      "name": "Accord",
+      "type": "SEDAN",
+      "year": 2024
+    }
+  },
+  {
+    "model": "djangoapp.carmodel",
+    "pk": 8,
+    "fields": {
+      "car_make": 2,
+      "name": "CR-V",
+      "type": "SUV",
+      "year": 2024
+    }
+  },
+  {
+    "model": "djangoapp.carmodel",
+    "pk": 9,
+    "fields": {
+      "car_make": 2,
+      "name": "Pilot",
+      "type": "SUV",
+      "year": 2024
+    }
+  },
+  {
+    "model": "djangoapp.carmodel",
+    "pk": 10,
+    "fields": {
+      "car_make": 3,
+      "name": "F-150",
+      "type": "PICKUP",
+      "year": 2024
+    }
+  },
+  {
+    "model": "djangoapp.carmodel",
+    "pk": 11,
+    "fields": {
+      "car_make": 3,
+      "name": "Explorer",
+      "type": "SUV",
+      "year": 2024
+    }
+  },
+  {
+    "model": "djangoapp.carmodel",
+    "pk": 12,
+    "fields": {
+      "car_make": 3,
+      "name": "Mustang",
+      "type": "COUPE",
+      "year": 2024
+    }
+  },
+  {
+    "model": "djangoapp.carmodel",
+    "pk": 13,
+    "fields": {
+      "car_make": 3,
+      "name": "Bronco",
+      "type": "SUV",
+      "year": 2024
+    }
+  },
+  {
+    "model": "djangoapp.carmodel",
+    "pk": 14,
+    "fields": {
+      "car_make": 4,
+      "name": "Silverado",
+      "type": "PICKUP",
+      "year": 2024
+    }
+  },
+  {
+    "model": "djangoapp.carmodel",
+    "pk": 15,
+    "fields": {
+      "car_make": 4,
+      "name": "Tahoe",
+      "type": "SUV",
+      "year": 2024
+    }
+  },
+  {
+    "model": "djangoapp.carmodel",
+    "pk": 16,
+    "fields": {
+      "car_make": 4,
+      "name": "Corvette",
+      "type": "COUPE",
+      "year": 2024
+    }
+  },
+  {
+    "model": "djangoapp.carmodel",
+    "pk": 17,
+    "fields": {
+      "car_make": 5,
+      "name": "3 Series",
+      "type": "SEDAN",
+      "year": 2024
+    }
+  },
+  {
+    "model": "djangoapp.carmodel",
+    "pk": 18,
+    "fields": {
+      "car_make": 5,
+      "name": "4 Series",
+      "type": "COUPE",
+      "year": 2024
+    }
+  },
+  {
+    "model": "djangoapp.carmodel",
+    "pk": 19,
+    "fields": {
+      "car_make": 5,
+      "name": "X5",
+      "type": "SUV",
+      "year": 2024
+    }
+  },
+  {
+    "model": "djangoapp.carmodel",
+    "pk": 20,
+    "fields": {
+      "car_make": 6,
+      "name": "Model 3",
+      "type": "SEDAN",
+      "year": 2024
+    }
+  },
+  {
+    "model": "djangoapp.carmodel",
+    "pk": 21,
+    "fields": {
+      "car_make": 6,
+      "name": "Model Y",
+      "type": "SUV",
+      "year": 2024
+    }
+  },
+  {
+    "model": "djangoapp.carmodel",
+    "pk": 22,
+    "fields": {
+      "car_make": 6,
+      "name": "Model S",
+      "type": "SEDAN",
+      "year": 2024
+    }
+  },
+  {
+    "model": "djangoapp.carmodel",
+    "pk": 23,
+    "fields": {
+      "car_make": 7,
+      "name": "Wrangler",
+      "type": "SUV",
+      "year": 2024
+    }
+  },
+  {
+    "model": "djangoapp.carmodel",
+    "pk": 24,
+    "fields": {
+      "car_make": 7,
+      "name": "Grand Cherokee",
+      "type": "SUV",
+      "year": 2024
+    }
+  },
+  {
+    "model": "djangoapp.carmodel",
+    "pk": 25,
+    "fields": {
+      "car_make": 8,
+      "name": "1500",
+      "type": "PICKUP",
+      "year": 2024
+    }
+  },
+  {
+    "model": "djangoapp.carmodel",
+    "pk": 26,
+    "fields": {
+      "car_make": 8,
+      "name": "2500",
+      "type": "PICKUP",
+      "year": 2024
+    }
+  },
+  {
+    "model": "djangoapp.carmodel",
+    "pk": 27,
+    "fields": {
+      "car_make": 9,
+      "name": "Outback",
+      "type": "WAGON",
+      "year": 2024
+    }
+  },
+  {
+    "model": "djangoapp.carmodel",
+    "pk": 28,
+    "fields": {
+      "car_make": 9,
+      "name": "Forester",
+      "type": "SUV",
+      "year": 2024
+    }
+  },
+  {
+    "model": "djangoapp.carmodel",
+    "pk": 29,
+    "fields": {
+      "car_make": 10,
+      "name": "C-Class",
+      "type": "SEDAN",
+      "year": 2024
+    }
+  },
+  {
+    "model": "djangoapp.carmodel",
+    "pk": 30,
+    "fields": {
+      "car_make": 10,
+      "name": "GLE",
+      "type": "SUV",
+      "year": 2024
+    }
+  }
+]

@@ -1,0 +1,114 @@
+{% extends 'djangoapp/base.html' %}
+{% load static %}
+
+{% block title %}{{ dealer.full_name }} - Dealership Review{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <!-- Back Button -->
+    <a href="{% url 'djangoapp:dealer_list' %}" class="btn btn-outline-secondary mb-4">
+        ← Back to Dealers
+    </a>
+    
+    {% if dealer %}
+        <!-- Dealer Information -->
+        <div class="card mb-4">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-8">
+                        <h2>{{ dealer.full_name }}</h2>
+                        <p class="text-muted">{{ dealer.short_name }}</p>
+                    </div>
+                    <div class="col-md-4 text-md-end">
+                        <span class="badge bg-primary fs-6">Dealer ID: {{ dealer.id }}</span>
+                    </div>
+                </div>
+                
+                <hr>
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        <p><strong>📍 Address:</strong> {{ dealer.address }}</p>
+                        <p><strong>🏙️ City:</strong> {{ dealer.city }}</p>
+                        <p><strong>🗺️ State:</strong> {{ dealer.state }}</p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><strong>📮 Zip Code:</strong> {{ dealer.zip }}</p>
+                        <p><strong>🌐 Coordinates:</strong> {{ dealer.lat }}, {{ dealer.long }}</p>
+                    </div>
+                </div>
+                
+                {% if user.is_authenticated %}
+                    <a href="{% url 'djangoapp:add_review_view' dealer.id %}" class="btn btn-primary mt-3">
+                        ✍️ Write a Review
+                    </a>
+                {% else %}
+                    <div class="alert alert-info mt-3 mb-0">
+                        <a href="/login">Login</a> to write a review for this dealer.
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+        
+        <!-- Reviews Section -->
+        <h3 class="mb-4">Customer Reviews ({{ reviews|length }})</h3>
+        
+        {% if reviews %}
+            <div class="row">
+                {% for review in reviews %}
+                <div class="col-lg-6 mb-4">
+                    <div class="card review-card h-100">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start mb-3">
+                                <div>
+                                    <h5 class="mb-1">{{ review.name }}</h5>
+                                    {% if review.purchase_date %}
+                                        <small class="text-muted">{{ review.purchase_date }}</small>
+                                    {% endif %}
+                                </div>
+                                <div class="text-center">
+                                    {% if review.sentiment == 'positive' %}
+                                        <img src="{% static 'images/sentiment_positive.png' %}" alt="Positive" class="sentiment-image" onerror="this.style.display='none'">
+                                        <span class="badge bg-success">Positive</span>
+                                    {% elif review.sentiment == 'negative' %}
+                                        <img src="{% static 'images/sentiment_negative.png' %}" alt="Negative" class="sentiment-image" onerror="this.style.display='none'">
+                                        <span class="badge bg-danger">Negative</span>
+                                    {% else %}
+                                        <img src="{% static 'images/sentiment_neutral.png' %}" alt="Neutral" class="sentiment-image" onerror="this.style.display='none'">
+                                        <span class="badge bg-secondary">Neutral</span>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            
+                            <p class="card-text">{{ review.review }}</p>
+                            
+                            {% if review.purchase and review.car_make %}
+                                <div class="mt-3 pt-2 border-top">
+                                    <span class="badge bg-light text-dark">
+                                        🚗 {{ review.car_make }} {{ review.car_model }} ({{ review.car_year }})
+                                    </span>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="alert alert-info">
+                No reviews yet. Be the first to review this dealer!
+            </div>
+        {% endif %}
+    {% else %}
+        <div class="alert alert-danger">
+            Dealer not found.
+        </div>
+    {% endif %}
+    
+    {% if error %}
+        <div class="alert alert-danger">
+            {{ error }}
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

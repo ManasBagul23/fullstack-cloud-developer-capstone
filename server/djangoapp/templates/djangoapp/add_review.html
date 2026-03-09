@@ -1,0 +1,159 @@
+{% extends 'djangoapp/base.html' %}
+{% load static %}
+
+{% block title %}Write a Review - {{ dealer.full_name }}{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <!-- Back Button -->
+    <a href="{% url 'djangoapp:dealer_details' dealer.id %}" class="btn btn-outline-secondary mb-4">
+        ← Back to Dealer
+    </a>
+    
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="mb-2">Write a Review</h2>
+                    {% if dealer %}
+                        <p class="text-muted mb-4">Share your experience with {{ dealer.full_name }}</p>
+                    {% endif %}
+                    
+                    {% if error %}
+                        <div class="alert alert-danger">{{ error }}</div>
+                    {% endif %}
+                    
+                    <form method="POST" action="{% url 'djangoapp:submit_review' dealer.id %}">
+                        {% csrf_token %}
+                        
+                        <!-- Review Text -->
+                        <div class="mb-4">
+                            <label for="review" class="form-label">Your Review *</label>
+                            <textarea 
+                                class="form-control" 
+                                id="review" 
+                                name="review" 
+                                rows="5" 
+                                placeholder="Write about your experience with this dealership..."
+                                required
+                            ></textarea>
+                            <div class="form-text">Minimum 10 characters</div>
+                        </div>
+                        
+                        <!-- Purchase Checkbox -->
+                        <div class="mb-4">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="purchase" name="purchase" onchange="togglePurchaseDetails()">
+                                <label class="form-check-label" for="purchase">
+                                    I purchased a car from this dealer
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <!-- Purchase Details (Hidden by default) -->
+                        <div id="purchaseDetails" class="card bg-light mb-4" style="display: none;">
+                            <div class="card-body">
+                                <h6 class="mb-3">Purchase Details</h6>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label for="purchase_date" class="form-label">Purchase Date</label>
+                                            <input type="date" class="form-control" id="purchase_date" name="purchase_date">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label for="car_year" class="form-label">Car Year</label>
+                                            <select class="form-select" id="car_year" name="car_year">
+                                                <option value="">Select year</option>
+                                                {% for year in years %}
+                                                    <option value="{{ year }}">{{ year }}</option>
+                                                {% empty %}
+                                                    {% for i in "0123456789012345678901234567890" %}
+                                                        {% if forloop.counter <= 30 %}
+                                                            <option value="{{ 2024|add:forloop.counter0|add:'-'|add:forloop.counter0 }}">
+                                                                {% widthratio forloop.counter0 1 -1 as neg %}
+                                                                {{ 2024|add:neg }}
+                                                            </option>
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label for="car_make" class="form-label">Car Make</label>
+                                            <select class="form-select" id="car_make" name="car_make" onchange="updateModels()">
+                                                <option value="">Select make</option>
+                                                {% for make in car_makes %}
+                                                    <option value="{{ make.name }}" data-models="{{ make.models|safe }}">
+                                                        {{ make.name }}
+                                                    </option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label for="car_model" class="form-label">Car Model</label>
+                                            <select class="form-select" id="car_model" name="car_model" disabled>
+                                                <option value="">Select model</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Submit Button -->
+                        <button type="submit" class="btn btn-primary btn-lg w-100">
+                            Submit Review
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function togglePurchaseDetails() {
+    const checkbox = document.getElementById('purchase');
+    const details = document.getElementById('purchaseDetails');
+    details.style.display = checkbox.checked ? 'block' : 'none';
+}
+
+function updateModels() {
+    const makeSelect = document.getElementById('car_make');
+    const modelSelect = document.getElementById('car_model');
+    
+    // Clear existing options
+    modelSelect.innerHTML = '<option value="">Select model</option>';
+    
+    const selectedOption = makeSelect.options[makeSelect.selectedIndex];
+    if (selectedOption.value) {
+        modelSelect.disabled = false;
+        // In a real app, this would populate from API or data attribute
+    } else {
+        modelSelect.disabled = true;
+    }
+}
+
+// Generate year options dynamically
+document.addEventListener('DOMContentLoaded', function() {
+    const yearSelect = document.getElementById('car_year');
+    if (yearSelect.options.length <= 1) {
+        const currentYear = new Date().getFullYear();
+        for (let i = 0; i < 30; i++) {
+            const option = document.createElement('option');
+            option.value = currentYear - i;
+            option.textContent = currentYear - i;
+            yearSelect.appendChild(option);
+        }
+    }
+});
+</script>
+{% endblock %}

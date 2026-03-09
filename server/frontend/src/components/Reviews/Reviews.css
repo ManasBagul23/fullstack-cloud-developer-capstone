@@ -1,0 +1,64 @@
+/* Reviews Component Styles */
+.review-card {
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.review-card:hover {
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.sentiment-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sentiment-image {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.review-text {
+  color: #4a4a4a;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+.car-purchase-info {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #f0f0f0;
+}
+
+.car-purchase-info .badge {
+  font-size: 0.8rem;
+}
+
+/* Summary Stats */
+.reviews-summary {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 10px;
+}
+
+.summary-item {
+  text-align: center;
+}
+
+.summary-item .count {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.summary-item .label {
+  color: #6c757d;
+  font-size: 0.9rem;
+}

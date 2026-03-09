@@ -1,0 +1,36 @@
+/* AddReview Component Styles */
+.add-review-card {
+  border: none;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+}
+
+.add-review-card h2 {
+  color: #2c3e50;
+}
+
+.add-review-card textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.purchase-details-card {
+  background-color: #f8f9fa;
+  border: 1px dashed #dee2e6;
+}
+
+.purchase-details-card h6 {
+  color: #6c757d;
+}
+
+.add-review-card .form-control:focus,
+.add-review-card .form-select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.15);
+}
+
+.add-review-card .btn-primary {
+  padding: 0.75rem;
+  font-weight: 500;
+  font-size: 1.1rem;
+}

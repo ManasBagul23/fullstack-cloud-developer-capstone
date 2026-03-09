@@ -1,0 +1,99 @@
+{% extends 'djangoapp/base.html' %}
+{% load static %}
+
+{% block title %}Car Dealers - Dealership Review{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <h1 class="mb-4">Car Dealerships</h1>
+    
+    <!-- Search and Filter -->
+    <div class="row mb-4">
+        <div class="col-md-8">
+            <input type="text" class="form-control" id="searchDealer" placeholder="Search dealers by name, city, or address...">
+        </div>
+        <div class="col-md-4">
+            <select class="form-select" id="stateFilter">
+                <option value="">All States</option>
+                {% for dealer in dealers %}
+                    {% if dealer.state not in seen_states %}
+                        <option value="{{ dealer.state }}">{{ dealer.state }}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+    
+    <!-- Dealers Grid -->
+    {% if dealers %}
+        <div class="row" id="dealersGrid">
+            {% for dealer in dealers %}
+            <div class="col-lg-4 col-md-6 mb-4 dealer-card-wrapper" 
+                 data-name="{{ dealer.full_name|lower }}"
+                 data-city="{{ dealer.city|lower }}"
+                 data-state="{{ dealer.state }}">
+                <div class="card h-100 dealer-card">
+                    <div class="card-body">
+                        <span class="badge bg-primary position-absolute top-0 end-0 m-2">
+                            #{{ dealer.id }}
+                        </span>
+                        <h5 class="card-title">{{ dealer.full_name }}</h5>
+                        <h6 class="card-subtitle mb-3 text-muted">{{ dealer.short_name }}</h6>
+                        
+                        <div class="dealer-info">
+                            <p class="mb-1"><strong>City:</strong> {{ dealer.city }}</p>
+                            <p class="mb-1"><strong>State:</strong> {{ dealer.state }}</p>
+                            <p class="mb-1"><strong>Address:</strong> {{ dealer.address }}</p>
+                            <p class="mb-1"><strong>Zip:</strong> {{ dealer.zip }}</p>
+                        </div>
+                    </div>
+                    <div class="card-footer text-center">
+                        <a href="{% url 'djangoapp:dealer_details' dealer.id %}" class="btn btn-primary btn-sm">
+                            View Details & Reviews
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="alert alert-info">
+            No dealers found.
+        </div>
+    {% endif %}
+    
+    {% if error %}
+        <div class="alert alert-danger">
+            {{ error }}
+        </div>
+    {% endif %}
+</div>
+
+<script>
+// Search functionality
+document.getElementById('searchDealer').addEventListener('input', function() {
+    filterDealers();
+});
+
+document.getElementById('stateFilter').addEventListener('change', function() {
+    filterDealers();
+});
+
+function filterDealers() {
+    const searchTerm = document.getElementById('searchDealer').value.toLowerCase();
+    const stateFilter = document.getElementById('stateFilter').value;
+    const cards = document.querySelectorAll('.dealer-card-wrapper');
+    
+    cards.forEach(card => {
+        const name = card.dataset.name;
+        const city = card.dataset.city;
+        const state = card.dataset.state;
+        
+        const matchesSearch = !searchTerm || name.includes(searchTerm) || city.includes(searchTerm);
+        const matchesState = !stateFilter || state === stateFilter;
+        
+        card.style.display = (matchesSearch && matchesState) ? '' : 'none';
+    });
+}
+</script>
+{% endblock %}

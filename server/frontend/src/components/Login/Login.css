@@ -1,0 +1,31 @@
+/* Login Component Styles */
+.login-form {
+  max-width: 400px;
+}
+
+.login-form h2 {
+  color: #2c3e50;
+}
+
+.login-form .form-control:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.login-form .btn-primary {
+  padding: 0.75rem;
+  font-weight: 500;
+}
+
+.login-form .btn-primary:hover {
+  transform: translateY(-1px);
+}
+
+.login-form a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.login-form a:hover {
+  text-decoration: underline;
+}

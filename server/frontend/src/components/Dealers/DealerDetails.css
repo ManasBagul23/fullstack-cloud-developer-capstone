@@ -1,0 +1,105 @@
+/* DealerDetails Component Styles */
+.dealer-details-card {
+  border: none;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+}
+
+.dealer-name {
+  color: #2c3e50;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.dealer-short-name {
+  font-size: 1.1rem;
+}
+
+.dealer-id-badge-large {
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+}
+
+.dealer-info-details {
+  margin-top: 1rem;
+}
+
+.dealer-info-details .info-item {
+  padding: 0.75rem;
+  margin-bottom: 0.5rem;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+}
+
+.dealer-info-details .info-item strong {
+  display: block;
+  color: #6c757d;
+  font-size: 0.85rem;
+  margin-bottom: 0.25rem;
+}
+
+.dealer-info-details .info-item span {
+  color: #2c3e50;
+  font-weight: 500;
+}
+
+/* Review Card Styles */
+.review-card {
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  transition: box-shadow 0.3s ease;
+}
+
+.review-card:hover {
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.reviewer-name {
+  margin-bottom: 0;
+  color: #2c3e50;
+}
+
+.sentiment-indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.sentiment-icon {
+  font-size: 1.5rem;
+}
+
+.review-text {
+  color: #4a4a4a;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.car-info {
+  margin-top: 0.5rem;
+}
+
+.car-info .badge {
+  font-weight: 500;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .review-header {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .sentiment-indicator {
+    flex-direction: row;
+    align-self: flex-start;
+  }
+}
